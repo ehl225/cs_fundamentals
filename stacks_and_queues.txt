@@ -1,0 +1,89 @@
+1. What is the main difference between a stack and a queue?
+A. A stack arranges elements with a LIFO focus/priority, while a queue arranges elements based on FIFO.
+-----------------------------------------------------------------------------------------------------------------
+2. What are the similarities between stacks and queues?
+A. Stacks and queues are both data structures that organize and arrange elements.
+-----------------------------------------------------------------------------------------------------------------
+3. Imagine you are an engineer tasked with implementing the UNDO and REDO options in a word processor such as Microsoft Word. Which data structure would you use for each option and why?
+A. To implement the UNDO option, I would use the stack data structure because LIFO should be used in this case. To undo the most recently manipulated info in a word processor, that would be the last element inputted, but the first element to be removed.
+To implement the REDO option, I would use also use the stack data structure to add back the element back to the top of the stack, in this case, the info most recently manipulated.
+-----------------------------------------------------------------------------------------------------------------
+Programming Questions
+You may program the following question in any language of your choice. Before you begin coding, write out a plan as to how you will solve the question.
+
+1. Given a string, reverse it using a stack. For example, the string "Bloc!" should be converted to "!colB".
+var bloc = "Bloc!";
+var stack = [];
+function reverseString(string) {
+  for (let i=0; i<string.length;i++) {
+    stack.push(string[i]);
+  }
+  var reversed='';
+  while (stack.length > 0) {
+    let deleted= stack.pop();
+    reversed += deleted;
+  }
+  return reversed;
+  console.log(reversed);
+  }
+reverseString(bloc);
+-----------------------------------------------------------------------------------------------------------------
+2. Implement the pop method of a stack using one queue. Make a FIFO data structure mirror the functionality of a LIFO data structure.
+Since the internal list is not the same as defined in the checkpoint, it may help to rewrite the pseudocode first.
+
+  class Stack {
+  constructor(){
+    this.pop = function dequeue (queue){
+      var newQueue = [];
+      var itemToDelete = [];
+
+      for(var i = 0; i < queue.length; i++){
+        if(i == queue.length - 1){
+          itemToDelete.push(queue[i]);
+        } else {
+          newQueue.push(queue[i]);
+        }
+      }
+      return itemToDelete;
+    }
+  }
+}
+var stack = new Stack();
+
+console.log("Deleted: " + stack.pop("Bloc"));
+---------------------------------------------------------------------------------------------------------------
+7. Implement the enqueue and dequeue methods defined in the checkpoint inside your own Queue class.
+To delete an item, take all of the elements in the queue one at a time and put them at the end of the queue, except for the last one which should be removed and returned.
+
+
+class Queue {
+  constructor() {
+    this.list= []
+  }
+  enqueue(item) {
+    this.list.push(item);
+  }
+  dequeue() {
+    if(this.isEmpty()) {
+        return "Empty";
+        }
+      else {
+      return this.list.shift();
+      }
+    }
+isEmpty() {
+    return this.list.length ==0;
+    }
+}
+
+var queue = new Queue();
+var queue2 = new Queue();
+queue.enqueue(1);
+queue.enqueue(5);
+queue.enqueue(4);
+console.log(queue);
+queue2.enqueue(2);
+queue2.enqueue(3);
+queue2.enqueue(8);
+queue2.dequeue();
+console.log(queue2);
