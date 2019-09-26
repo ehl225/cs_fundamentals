@@ -1,0 +1,84 @@
+1. A line of people at an amusement park ride.
+
+-The line is composed of members, represented as strings.
+-There is a front to the line, as well as a back.
+-When someone enters the line, place them at the end.
+-People may leave the line whenever they see fit, and those behind them take their place.
+-Given the above real-world information, use an array data structure to code the following solution.
+
+a) Use an array input: ["Vivian", "Ava", "Josh", "Patrick", "Mike"]
+------------------------------------------------------------------------------------------
+b) Insert a new person, "Mary" at the end of the line. In other words, you should insert Mary after Mike.
+
+var line = ["Vivian", "Ava", "Josh", "Patrick", "Mike"];
+
+function insertPerson (person) {
+  line.push(person);
+  return line;
+  }
+insertPerson("Mary");
+console.log(line);
+------------------------------------------------------------------------------------------
+c) Find a person in line named "Josh." This function should return the position of 2 in the array, (recall that arrays are 0-based).
+
+var line = ["Vivian", "Ava", "Josh", "Patrick", "Mike"];
+function findPosition (person) {
+  var count=0;
+  for (let i=0; i< line.length; i++) {
+    if (line[i] == person) {
+      console.log(line[i]);
+    }
+    else {
+        count= count+1;
+    }
+  }
+    if (count!=0) {
+      console.log("Person not found in line.");
+    }
+  }
+findPosition("Josh");
+------------------------------------------------------------------------------------------
+d) Find a person in line named "Emily." What should your function return if it does not find the item in the array?
+var line = ["Vivian", "Ava", "Josh", "Patrick", "Mike"];
+function findPosition (person) {
+  var count=0;
+  for (let i=0; i< line.length; i++) {
+    if (line[i] == person) {
+      console.log(line[i]);
+    }
+    else {
+        count= count+1;
+    }
+  }
+    if (count!=0) {
+      console.log("Person not found in line.");
+    }
+  }
+findPosition("Emily");
+------------------------------------------------------------------------------------------
+e) What if Ava wants to allow a friend, "Melissa", to cut in line in front of her? How would you code this so Melissa appears before Ava?
+
+var line = ["Vivian", "Ava", "Josh", "Patrick", "Mike"];
+
+function cutLine (personWaiting, personCutting) {
+    line.splice(line.indexOf(personWaiting), 0, personCutting);
+}
+cutLine("Ava", "Melissa");
+console.log(line);
+------------------------------------------------------------------------------------------
+f) If Patrick wants to leave the line, how would you delete him from the array?
+var line = ["Vivian", "Ava", "Josh", "Patrick", "Mike"];
+function removePerson (person) {
+  line.splice(line.indexOf(person),1);
+}
+removePerson("Patrick");
+console.log(line);
+
+------------------------------------------------------------------------------------------
+2. Provide another real-world example that you can model using a data structure.
+Another example is accessing and organizing your phone contact book.
+var phonebook [Aaron Smith, Alan Walker, Becky Jones, Lambert Torres, Rebecca Mark]
+
+------------------------------------------------------------------------------------------
+3. How would your data structure allow developers to access and manipulate the data?
+This array can allow developers to organize the info alphabetically by first or last name and delete or add people in. 
